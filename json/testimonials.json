@@ -1,0 +1,43 @@
+[
+    {
+      "id": "testimonial1",
+      "name": "Saul Goodman",
+      "role": "Ceo & Founder",
+      "comment": "Proin iaculis purus consequat sem cure dignissim donec porttitora entum suscipit rhoncus.",
+      "image": "assets/img/testimonials/testimonials-1.jpg",
+      "stars": 5
+    },
+    {
+      "id": "testimonial2",
+      "name": "Sara Wilsson",
+      "role": "Designer",
+      "comment": "Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid.",
+      "image": "assets/img/testimonials/testimonials-2.jpg",
+      "stars": 5
+    },
+    {
+      "id": "testimonial3",
+      "name": "Jena Karlis",
+      "role": "Store Owner",
+      "comment": "Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis.",
+      "image": "assets/img/testimonials/testimonials-3.jpg",
+      "stars": 4
+    },
+    {
+      "id": "testimonial4",
+      "name": "Matt Brandon",
+      "role": "Freelancer",
+      "comment": "Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit.",
+      "image": "assets/img/testimonials/testimonials-4.jpg",
+      "stars": 5
+    },
+    {
+      "id": "testimonial5",
+      "name": "John Larson",
+      "role": "Entrepreneur",
+      "comment": "Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam.",
+      "image": "assets/img/testimonials/testimonials-5.jpg",
+      "stars": 5
+    }
+  ]
+  

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "portfolioModal1",
+    "title": "Threads",
+    "category": "Illustration",
+    "description": "Description of project 1.",
+    "image": "assets/img/portfolio/1.jpg",
+    "client": "Threads"
+  },
+  {
+    "id": "portfolioModal2",
+    "title": "Explore",
+    "category": "Graphic Design",
+    "description": "Description of project 2.",
+    "image": "assets/img/portfolio/2.jpg",
+    "client": "Explore"
+  },
+  {
+    "id": "portfolioModal3",
+    "title": "Test",
+    "category": "Test",
+    "description": "Description of project 3.",
+    "image": "assets/img/portfolio/3.jpg",
+    "client": "Threads"
+  },
+  {
+    "id": "portfolioModal4",
+    "title": "Bonjour",
+    "category": "Test",
+    "description": "Description of project 4.",
+    "image": "assets/img/portfolio/6.jpg",
+    "client": "Jerome"
+  }
+]
