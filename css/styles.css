@@ -422,6 +422,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
 }
 button:not(:disabled),
 [type="button"]:not(:disabled),
@@ -480,6 +481,7 @@ legend + * {
 [type="search"] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 /* rtl:raw:
@@ -501,6 +503,7 @@ legend + * {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 output {
@@ -11907,7 +11910,6 @@ header.masthead .masthead-heading {
   background: rgba(0, 0, 0, 0.8);
 }
 
-
 @media (max-width: 1200px) {
   .carousel-item {
     max-height: 10000px;
@@ -11921,6 +11923,12 @@ header.masthead .masthead-heading {
   }
   .carousel-inner {
     justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  #testimonials {
+    margin-top: 100px;
   }
 }
 

@@ -65,54 +65,54 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       // Add portfolio items to the grid
       const portfolioItemHTML = `
-            <div class="col-lg-4 col-sm-6 mb-4 portfolio-item isotope-item ${filter}">
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#${item.id}">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fas fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="${item.image}" alt="${item.title}" />
-                    </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">${item.title}</div>
-                        <div class="portfolio-caption-subheading text-muted">${type}</div>
-                    </div>
-                </div>
-            </div>`;
+      <div class="col-lg-4 col-sm-6 mb-4 portfolio-item isotope-item ${filter}">
+          <div class="portfolio-item">
+              <a class="portfolio-link" data-bs-toggle="modal" href="#${item.id}">
+                  <div class="portfolio-hover">
+                      <div class="portfolio-hover-content">
+                          <i class="fas fa-plus fa-3x"></i>
+                      </div>
+                  </div>
+                  <img class="img-fluid" src="${item.image}" alt="${item.title}" />
+              </a>
+              <div class="portfolio-caption">
+                  <div class="portfolio-caption-heading">${item.title}</div>
+                  <div class="portfolio-caption-subheading text-muted">${type}</div>
+              </div>
+          </div>
+      </div>`;
       portfolioContainer.insertAdjacentHTML("beforeend", portfolioItemHTML);
 
       // Add modals for each portfolio item
       const modalHTML = `
-            <div class="portfolio-modal modal fade" id="${item.id}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="close-modal" data-bs-dismiss="modal">
-                            <img src="assets/img/close-icon.svg" alt="Close modal" />
-                        </div>
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="modal-body">
-                                        <h2 class="text-uppercase">${item.title}</h2>
-                                        <p class="item-intro text-muted">${type}</p>
-                                        <img class="img-fluid d-block mx-auto" src="${item.image}" alt="${item.title}" />
-                                        <p>${item.description}</p>
-                                        <ul class="list-inline">
-                                            <li><strong>Client:</strong> ${item.client}</li>
-                                            <li><strong>Category:</strong> ${type}</li>
-                                        </ul>
-                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                            <i class="fas fa-xmark me-1"></i> Close Project
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
+      <div class="portfolio-modal modal fade" id="${item.id}" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="close-modal" data-bs-dismiss="modal">
+                      <img src="assets/img/close-icon.svg" alt="Close modal" />
+                  </div>
+                  <div class="container">
+                      <div class="row justify-content-center">
+                          <div class="col-lg-8">
+                              <div class="modal-body">
+                                  <h2 class="text-uppercase">${item.title}</h2>
+                                  <p class="item-intro text-muted">${type}</p>
+                                  <img class="img-fluid d-block mx-auto" src="${item.image}" alt="${item.title}" />
+                                  <p>${item.description}</p>
+                                  <ul class="list-inline">
+                                      <li><strong>Client:</strong> ${item.client}</li>
+                                      <li><strong>Category:</strong> ${type}</li>
+                                  </ul>
+                                  <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                      <i class="fas fa-xmark me-1"></i> Close Project
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>`;
       portfolioModalsContainer.insertAdjacentHTML("beforeend", modalHTML);
 
       // Collect filters for the portfolio items
@@ -136,6 +136,17 @@ window.addEventListener("DOMContentLoaded", async () => {
       layoutMode: "fitRows",
     });
 
+    // Apply the "All" filter immediately on page load
+    isotope.arrange({ filter: "*" });
+
+    // Highlight the "All" button as active
+    const allFilterButton = document.querySelector('[data-filter="*"]');
+    if (allFilterButton) {
+      allFilterButton.classList.add("filter-active");
+    } else {
+      console.warn("All filter button not found");
+    }
+
     // Add click listeners to filter buttons
     const filterButtons = document.querySelectorAll(".portfolio-filters li");
     filterButtons.forEach((button) => {
@@ -143,13 +154,18 @@ window.addEventListener("DOMContentLoaded", async () => {
         // Update active filter class
         document
           .querySelector(".portfolio-filters .filter-active")
-          .classList.remove("filter-active");
+          ?.classList.remove("filter-active");
         button.classList.add("filter-active");
 
         // Apply filter to Isotope
         const filterValue = button.getAttribute("data-filter");
         isotope.arrange({ filter: filterValue });
       });
+    });
+
+    // arrange image once its loaded
+    imagesLoaded(portfolioContainer, () => {
+      isotope.arrange({ filter: "*" });
     });
   } catch (error) {
     console.error("Error loading portfolio items:", error);
@@ -277,4 +293,53 @@ window.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Failed to load testimonials:", error);
   }
+
+  /**
+   * Email
+   */
+  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+
+  // Handle form submission
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Gather form data
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+      };
+
+      // Send the email using EmailJS
+      emailjs
+        .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData) // Replace with your Service ID and Template ID
+        .then(
+          function (response) {
+            // Show success message
+            document
+              .getElementById("submitSuccessMessage")
+              .classList.remove("d-none");
+            document
+              .getElementById("submitErrorMessage")
+              .classList.add("d-none");
+            console.log("SUCCESS!", response.status, response.text);
+          },
+          function (error) {
+            // Show error message
+            document
+              .getElementById("submitErrorMessage")
+              .classList.remove("d-none");
+            document
+              .getElementById("submitSuccessMessage")
+              .classList.add("d-none");
+            console.log("FAILED...", error);
+          }
+        );
+
+      // Clear the form after submission
+      this.reset();
+    });
 });
