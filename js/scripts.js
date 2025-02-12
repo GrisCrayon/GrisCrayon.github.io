@@ -315,7 +315,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       // Send the email using EmailJS
       emailjs
-        .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData) // Replace with your Service ID and Template ID
+        .send("service-GrisCrayon", "template-GrisCrayon", formData) // Replace with your Service ID and Template ID
         .then(
           function (response) {
             // Show success message
